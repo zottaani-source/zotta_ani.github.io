@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ani Zotta — Servicii de Contabilitate, Raportare catre management, Imbunatatire de procese & Cursuri Practice de Contabilitate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1B2A4A;
+    --navy-deep:#101a30;
+    --paper:#F7F5F0;
+    --paper-dim:#EEEAE1;
+    --emerald:#2F6E5C;
+    --emerald-light:#4d9180;
+    --graphite:#4A4A47;
+    --ink:#1f1e1c;
+    --line: rgba(27,42,74,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--navy);
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.02em;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,245,240,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:72px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.15rem;
+    color:var(--navy);
+  }
+  .brand span{color:var(--emerald);}
+  nav ul{
+    display:flex; gap:36px; list-style:none;
+  }
+  nav ul li a{
+    font-size:0.92rem;
+    color:var(--graphite);
+    transition:color 0.2s;
+  }
+  nav ul li a:hover{color:var(--emerald);}
+  .nav-cta{
+    background:var(--navy);
+    color:var(--paper);
+    padding:10px 20px;
+    border-radius:3px;
+    font-size:0.88rem;
+    font-weight:500;
+    transition:background 0.2s;
+  }
+  .nav-cta:hover{background:var(--emerald);}
+  .nav-links-mobile{display:none;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    padding:108px 0 96px;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    top:-40%; right:-15%;
+    width:680px; height:680px;
+    background:radial-gradient(circle, rgba(47,110,92,0.10) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+    position:relative;
+    z-index:1;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    color:var(--emerald);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--emerald);
+  }
+  .hero h1{
+    font-size:3.05rem;
+    line-height:1.08;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--emerald);
+  }
+  .hero p.lead{
+    font-size:1.12rem;
+    color:var(--graphite);
+    line-height:1.6;
+    max-width:480px;
+    margin-bottom:32px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:16px;
+    align-items:center;
+  }
+  .btn-primary{
+    background:var(--navy);
+    color:var(--paper);
+    padding:15px 28px;
+    border-radius:3px;
+    font-weight:500;
+    font-size:0.95rem;
+    transition:transform 0.2s, background 0.2s;
+    display:inline-block;
+  }
+  .btn-primary:hover{background:var(--emerald); transform:translateY(-1px);}
+  .btn-secondary{
+    color:var(--navy);
+    font-weight:500;
+    font-size:0.95rem;
+    border-bottom:1px solid var(--navy);
+    padding-bottom:3px;
+    transition:opacity 0.2s;
+  }
+  .btn-secondary:hover{opacity:0.65;}
+
+  /* Ledger signature element */
+  .ledger-card{
+    background:var(--navy);
+    border-radius:6px;
+    padding:32px 28px;
+    color:var(--paper);
+    position:relative;
+    box-shadow:0 24px 60px -20px rgba(27,42,74,0.45);
+  }
+  .ledger-card .ledger-head{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:rgba(247,245,240,0.55);
+    border-bottom:1px solid rgba(247,245,240,0.18);
+    padding-bottom:14px;
+    margin-bottom:16px;
+    display:flex;
+    justify-content:space-between;
+  }
+  .ledger-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:13px 0;
+    border-bottom:1px solid rgba(247,245,240,0.10);
+    font-size:0.92rem;
+  }
+  .ledger-row:last-child{border-bottom:none;}
+  .ledger-row .label{color:rgba(247,245,240,0.78);}
+  .ledger-row .val{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--emerald-light);
+    font-weight:500;
+  }
+  .ledger-foot{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid rgba(247,245,240,0.18);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:rgba(247,245,240,0.5);
+  }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:28px 0;
+  }
+  .trust .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .trust-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--graphite);
+    opacity:0.65;
+    white-space:nowrap;
+  }
+  .trust-logos{
+    display:flex;
+    gap:36px;
+    flex-wrap:wrap;
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.02rem;
+    color:var(--navy);
+    opacity:0.55;
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:100px 0;}
+  .section-head{
+    max-width:620px;
+    margin-bottom:56px;
+  }
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:2.2rem; line-height:1.15;}
+  .section-head p{
+    color:var(--graphite);
+    margin-top:14px;
+    font-size:1.02rem;
+    line-height:1.6;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service{
+    background:var(--paper);
+    padding:32px 26px;
+    transition:background 0.25s;
+  }
+  .service:hover{background:#fff;}
+  .service .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--emerald);
+    margin-bottom:14px;
+    display:block;
+  }
+  .service h3{
+    font-size:1.08rem;
+    margin-bottom:10px;
+    line-height:1.3;
+  }
+  .service p{
+    font-size:0.87rem;
+    color:var(--graphite);
+    line-height:1.55;
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:32px;
+  }
+  .pricing-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:36px 28px;
+    position:relative;
+  }
+  .pricing-card.pricing-featured{
+    background:var(--navy);
+    color:var(--paper);
+    border-color:var(--navy);
+    box-shadow:0 16px 40px -16px rgba(27,42,74,0.4);
+  }
+  .pricing-tier{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--emerald);
+    margin-bottom:14px;
+  }
+  .pricing-featured .pricing-tier{color:var(--emerald-light);}
+  .pricing-range{
+    font-family:'Fraunces', serif;
+    font-size:1.7rem;
+    font-weight:600;
+    color:var(--navy);
+    line-height:1.15;
+    margin-bottom:24px;
+  }
+  .pricing-featured .pricing-range{color:var(--paper);}
+  .pricing-range .currency{
+    font-family:'Inter',sans-serif;
+    font-size:0.85rem;
+    font-weight:400;
+    color:var(--graphite);
+  }
+  .pricing-featured .pricing-range .currency{color:rgba(247,245,240,0.65);}
+  .pricing-features{
+    list-style:none;
+    padding:0;
+    border-top:1px solid var(--line);
+    padding-top:20px;
+  }
+  .pricing-featured .pricing-features{border-color:rgba(247,245,240,0.2);}
+  .pricing-features li{
+    font-size:0.88rem;
+    color:var(--graphite);
+    padding:7px 0;
+    border-bottom:1px solid var(--line);
+    padding-left:16px;
+    position:relative;
+    line-height:1.45;
+  }
+  .pricing-features li::before{
+    content:"·";
+    position:absolute;
+    left:0;
+    color:var(--emerald);
+    font-weight:700;
+  }
+  .pricing-featured .pricing-features li{
+    color:rgba(247,245,240,0.8);
+    border-color:rgba(247,245,240,0.12);
+  }
+  .pricing-featured .pricing-features li::before{color:var(--emerald-light);}
+  .pricing-features li:last-child{border-bottom:none;}
+  .pricing-extras{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .pricing-extra-item{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:24px;
+    align-items:center;
+    padding:20px 28px;
+    border-bottom:1px solid var(--line);
+    background:#fff;
+    transition:background 0.2s;
+  }
+  .pricing-extra-item:last-child{border-bottom:none;}
+  .pricing-extra-item:hover{background:var(--paper);}
+  .pe-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--emerald);
+  }
+  .pe-desc{
+    font-size:0.92rem;
+    color:var(--graphite);
+    line-height:1.5;
+  }
+  .pe-desc strong{color:var(--navy);}
+
+  /* ---------- WHY / DIFFERENTIATOR ---------- */
+  .why{
+    background:var(--navy);
+    color:var(--paper);
+    border-radius:8px;
+    padding:64px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .why::after{
+    content:"";
+    position:absolute;
+    bottom:-30%; left:-10%;
+    width:480px; height:480px;
+    background:radial-gradient(circle, rgba(47,110,92,0.22) 0%, transparent 70%);
+  }
+  .why-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    position:relative;
+    z-index:1;
+  }
+  .why h2{color:var(--paper); font-size:1.9rem; margin-bottom:18px;}
+  .why p.lead{color:rgba(247,245,240,0.75); line-height:1.65; font-size:1.02rem;}
+  .compare-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    padding:16px 0;
+    border-bottom:1px solid rgba(247,245,240,0.14);
+    font-size:0.92rem;
+  }
+  .compare-row:first-child{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:rgba(247,245,240,0.5);
+    padding-bottom:12px;
+  }
+  .compare-row .std{color:rgba(247,245,240,0.55);}
+  .compare-row .premium{color:var(--emerald-light); font-weight:500;}
+
+  /* ---------- PROCESS ---------- */
+  .process-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .process-item{
+    display:grid;
+    grid-template-columns:80px 1fr;
+    gap:28px;
+    padding:30px 0;
+    border-top:1px solid var(--line);
+    align-items:start;
+  }
+  .process-item:last-child{border-bottom:1px solid var(--line);}
+  .process-item .num{
+    font-family:'Fraunces', serif;
+    font-size:2rem;
+    color:var(--paper-dim);
+    -webkit-text-stroke:1.5px var(--navy);
+    color:transparent;
+    font-weight:600;
+  }
+  .process-item h3{font-size:1.15rem; margin-bottom:6px;}
+  .process-item p{color:var(--graphite); font-size:0.93rem; line-height:1.6; max-width:520px;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .about-photo-placeholder{
+    background:var(--navy);
+    border-radius:6px;
+    aspect-ratio:4/5;
+    display:flex;
+    align-items:flex-end;
+    padding:24px;
+    position:relative;
+  }
+  .about-photo-placeholder .initials{
+    font-family:'Fraunces', serif;
+    font-size:5rem;
+    color:rgba(247,245,240,0.18);
+    position:absolute;
+    top:24px; left:24px;
+  }
+  .about-photo-placeholder .caption{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    color:rgba(247,245,240,0.7);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .about-text p{
+    color:var(--graphite);
+    line-height:1.7;
+    font-size:1rem;
+    margin-bottom:18px;
+  }
+  .credentials{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:28px;
+  }
+  .credential{
+    border-left:2px solid var(--emerald);
+    padding-left:14px;
+  }
+  .credential .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--emerald);
+    margin-bottom:4px;
+  }
+  .credential .val{font-size:0.9rem; color:var(--navy); font-weight:500;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--paper-dim);
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:center;
+  }
+  .contact h2{font-size:2.3rem; margin-bottom:18px;}
+  .contact p.lead{color:var(--graphite); font-size:1.02rem; line-height:1.6; margin-bottom:28px;}
+  .contact-detail{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:14px;
+    font-size:0.98rem;
+  }
+  .contact-detail .k{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--emerald);
+    width:80px;
+    flex-shrink:0;
+  }
+  .contact-detail a{font-weight:500; color:var(--navy);}
+  .contact-detail a:hover{color:var(--emerald);}
+  .form-card{
+    background:#fff;
+    border-radius:6px;
+    padding:36px;
+    border:1px solid var(--line);
+  }
+  .form-card label{
+    display:block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--graphite);
+    margin-bottom:6px;
+    margin-top:18px;
+  }
+  .form-card label:first-child{margin-top:0;}
+  .form-card input,
+  .form-card textarea{
+    width:100%;
+    border:none;
+    border-bottom:1px solid var(--line);
+    background:transparent;
+    padding:10px 2px;
+    font-family:'Inter', sans-serif;
+    font-size:0.95rem;
+    color:var(--ink);
+    outline:none;
+    transition:border-color 0.2s;
+  }
+  .form-card input:focus,
+  .form-card textarea:focus{border-color:var(--emerald);}
+  .form-card textarea{resize:vertical; min-height:70px;}
+  .form-card button{
+    margin-top:26px;
+    width:100%;
+    background:var(--navy);
+    color:var(--paper);
+    border:none;
+    padding:15px;
+    border-radius:3px;
+    font-family:'Inter', sans-serif;
+    font-weight:500;
+    font-size:0.95rem;
+    cursor:pointer;
+    transition:background 0.2s;
+  }
+  .form-card button:hover{background:var(--emerald);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:36px 0;
+    border-top:1px solid var(--line);
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  footer p{
+    font-size:0.82rem;
+    color:var(--graphite);
+    opacity:0.7;
+  }
+
+  /* ---------- REVEAL ANIMATION ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    nav ul{display:none;}
+    .hero-grid{grid-template-columns:1fr; gap:48px;}
+    .hero h1{font-size:2.3rem;}
+    .services-grid{grid-template-columns:repeat(2, 1fr);}
+    .pricing-grid{grid-template-columns:1fr;}
+    .pricing-extra-item{grid-template-columns:1fr; gap:6px;}
+    .why-grid{grid-template-columns:1fr; gap:32px;}
+    .why{padding:44px 28px;}
+    .about-grid{grid-template-columns:1fr;}
+    .about-photo-placeholder{max-width:280px;}
+    .contact-grid{grid-template-columns:1fr; gap:40px;}
+    .credentials{grid-template-columns:1fr;}
+    section{padding:72px 0;}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 20px;}
+    .hero h1{font-size:1.9rem;}
+    .hero-actions{flex-direction:column; align-items:flex-start; gap:14px;}
+    .services-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Ani Zotta <span>·</span> Servicii si Cursuri de Contabilitate</div>
+    <ul>
+      <li><a href="#servicii">Servicii</a></li>
+      <li><a href="#preturi">Tarife</a></li>
+      <li><a href="#diferenta">De ce noi</a></li>
+      <li><a href="#proces">Proces</a></li>
+      <li><a href="#despre">Despre</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Discutăm</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Contabilitate completă & Automatizare rapoarte</div>
+      <h1>Contabilitatea ta, <em>completă</em>. Cifrele tale, <em>citite corect</em>.</h1>
+      <p class="lead">15+ ani de experiență fiscal-financiară în companii multinaționale (GE, Halliburton, BAT, Deloitte, EY): contabilitate completă, declarații, payroll, suport audit și dashboard-uri Power BI — totul de la un singur partener.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Programează o discuție</a>
+        <a href="#servicii" class="btn-secondary">Vezi serviciile</a>
+      </div>
+    </div>
+    <div class="ledger-card reveal">
+      <div class="ledger-head">
+        <span>Extras Servicii</span>
+        <span>2026</span>
+      </div>
+      <div class="ledger-row">
+        <span class="label">Contabilitate & declarații fiscale</span>
+        <span class="val">Complet</span>
+      </div>
+      <div class="ledger-row">
+        <span class="label">Raportare management</span>
+        <span class="val">Excel · Power BI</span>
+      </div>
+      <div class="ledger-row">
+        <span class="label">Cursuri contabilitate</span>
+        <span class="val">de la 1.500 lei</span>
+      </div>
+      <div class="ledger-row">
+        <span class="label">Automatizare rapoarte</span>
+        <span class="val">Power BI · SQL</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="wrap">
+    <span class="trust-label">Experiență financiare-contabila si fiscala în</span>
+    <div class="trust-logos">
+      <span>General Eelectric</span><span>Halliburton</span><span>BAT</span><span>Deloitte</span><span>EY</span>
+    </div>
+  </div>
+</div
+<section id="servicii">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Servicii</div>
+      <h2>Contabilitate, raportare, cursuri și automatizare — un singur partener.</h2>
+      <p>De la evidența contabilă și declarații fiscale, până la dashboards Power BI, cursuri practice și îmbunătățiri de procese financiare.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service reveal">
+        <span class="tag">01 · Contabilitate & Fiscal</span>
+        <h3>Contabilitate, declarații și situații financiare</h3>
+        <p>Evidență contabilă completă, întocmire de declarații fiscale (TVA, impozit pe profit, SAF-T) și situații financiare anuale.</p>
+      </div>
+      <div class="service reveal">
+        <span class="tag">02 · Raportare management</span>
+        <h3>Raportare lunară/anuală în Excel & Power BI</h3>
+        <p>Rapoarte financiare periodice către management, structurate clar și livrate în Excel sau dashboards Power BI interactive.</p>
+      </div>
+      <div class="service reveal">
+        <span class="tag">03 · Cursuri</span>
+        <h3>Cursuri contabilitate și declarații fiscale</h3>
+        <p>Cursuri practice: contabilitate generală - de la note contabilie pana la intocmirea situatiilor financiare sau întocmire declarații (impozit pe profit, decont TVA, SAF-T) — 15 ore per curs.</p>
+      </div>
+      <div class="service reveal">
+        <span class="tag">04 · Automatizare</span>
+        <h3>Automatizare rapoarte cu Power BI & SQL</h3>
+        <p>Construiesc arhitecturi de date și rapoarte automate, conectate la sursele tale contabile — fără export manual lunar.</p>
+      </div>
+      <div class="service reveal">
+        <span class="tag">05 · Optimizare procese</span>
+        <h3>Îmbunătățiri procese financiar-contabile</h3>
+        <p>Analiză și reproiectare a fluxurilor financiar-contabile pentru eficiență mai mare și erori mai puține (Lean Six Sigma Green Belt).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="preturi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Tarife orientative</div>
+      <h2>Prețuri clare, fără surprize.</h2>
+      <p>Tarifele variază în funcție de volumul de documente, numărul de angajați și complexitatea activității. Mai jos găsești orientativ intervalele de preț — contactează-mă pentru o ofertă personalizată.</p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <div class="pricing-tier">Companii mici</div>
+        <div class="pricing-range">200 – 1.000 <span class="currency">lei/lună</span></div>
+        <ul class="pricing-features">
+          <li>Până la 100 documente primare/lună</li>
+          <li>Până la 10 angajați</li>
+          <li>Contabilitate completă + declarații fiscale</li>
+          <li>Situații financiare anuale</li>
+        </ul>
+      </div>
+      <div class="pricing-card pricing-featured">
+        <div class="pricing-tier">Companii medii</div>
+        <div class="pricing-range">1.000 – 2.500 <span class="currency">lei/lună</span></div>
+        <ul class="pricing-features">
+          <li>100 – 300 documente primare/lună</li>
+          <li>Până la 30 de angajați</li>
+          <li>Tarif final în funcție de complexitatea activității</li>
+          <li>Contabilitate completă + declarații fiscale</li>
+        </ul>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">Companii mari</div>
+        <div class="pricing-range">de la 2.500 <span class="currency">lei/lună</span></div>
+        <ul class="pricing-features">
+          <li>Peste 300 documente primare/lună</li>
+          <li>Tarif negociat în funcție de volum și complexitate</li>
+          <li>Pachet personalizat de servicii</li>
+          <li>Ofertă individualizată</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pricing-extras reveal">
+      <div class="pricing-extra-item">
+        <span class="pe-tag">Raportare management</span>
+        <span class="pe-desc">+10% la tariful de contabilitate — rapoarte lunare/anuale în Excel sau Power BI</span>
+      </div>
+      <div class="pricing-extra-item">
+        <span class="pe-tag">Cursuri contabilitate</span>
+        <span class="pe-desc">de la <strong>1.500 lei</strong> per curs/cursant — 15 ore, contabilitate, impozit pe profit, TVA, SAF-T</span>
+      </div>
+      <div class="pricing-extra-item">
+        <span class="pe-tag">Automatizare rapoarte</span>
+        <span class="pe-desc">de la <strong>5.000 lei</strong> per proiect — Power BI + SQL, livrare completă</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diferenta">
+  <div class="wrap">
+    <div class="why reveal">
+      <div class="why-grid">
+        <div>
+          <h2>De ce nu sunt un contabil obișnuit</h2>
+          <p class="lead">Majoritatea firmelor de contabilitate din România înregistrează tranzacții. Eu citesc legislația fiscală în profunzime și transform cifrele în decizii — cu instrumentele pe care le-am folosit în corporații multinaționale, adaptate pentru afaceri din România.</p>
+        </div>
+        <div>
+          <div class="compare-row">
+            <span>Contabilitate standard</span>
+            <span>Cu Ani Zotta</span>
+          </div>
+          <div class="compare-row">
+            <span class="std">Înregistrare tranzacții</span>
+            <span class="premium">Înregistrare + interpretare fiscală</span>
+          </div>
+          <div class="compare-row">
+            <span class="std">Declarații depuse la termen</span>
+            <span class="premium">Strategie de optimizare legală</span>
+          </div>
+          <div class="compare-row">
+            <span class="std">Raport lunar în Excel</span>
+            <span class="premium">Dashboard Power BI, live</span>
+          </div>
+          <div class="compare-row">
+            <span class="std">Reacție la modificări legislative</span>
+            <span class="premium">Monitorizare proactivă OUG/ANAF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proces">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Cum lucrăm</div>
+      <h2>Patru pași, fără birocrație inutilă.</h2>
+    </div>
+    <div class="process-list">
+      <div class="process-item reveal">
+        <div class="num">01</div>
+        <div>
+          <h3>Discuție inițială</h3>
+          <p>30 de minute în care îmi spui unde te doare: fiscalitate neclară, rapoarte care nu te ajută să decizi, sau pur și simplu vrei un al doilea ochi expert peste contabilitate.</p>
+        </div>
+      </div>
+      <div class="process-item reveal">
+        <div class="num">02</div>
+        <div>
+          <h3>Diagnostic financiar-fiscal</h3>
+          <p>Analizez situația actuală — structură fiscală, riscuri de conformitate, calitatea raportării — și îți spun exact ce poate fi optimizat.</p>
+        </div>
+      </div>
+      <div class="process-item reveal">
+        <div class="num">03</div>
+        <div>
+          <h3>Plan de acțiune</h3>
+          <p>Propunere clară: ce facem, în ce ordine, cu ce impact estimat asupra obligațiilor fiscale și asupra clarității rapoartelor tale.</p>
+        </div>
+      </div>
+      <div class="process-item reveal">
+        <div class="num">04</div>
+        <div>
+          <h3>Implementare & monitorizare</h3>
+          <p>Implementăm dashboard-urile și strategia fiscală, apoi rămân lângă afacerea ta pentru actualizări legislative și rapoarte recurente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="despre">
+  <div class="wrap about-grid">
+    <div class="about-photo-placeholder reveal">
+      <span class="initials">AZ</span>
+      <span class="caption">Ani Zotta · Bucureşti</span>
+    </div>
+    <div class="about-text reveal">
+      <div class="eyebrow">Despre mine</div>
+      <h2 style="margin-bottom:18px;">15 ani în finanțele corporative, puși în slujba afacerilor românești</h2>
+      <p>Am lucrat în mediul financiar-fiscal al unor companii multinaționale — GE, Halliburton, BAT — și în firme de top precum Deloitte și EY. Am văzut cum funcționează raportarea financiară și fiscalitatea la cel mai înalt nivel de rigoare.</p>
+      <p>Astăzi pun această experiență la dispoziția afacerilor din România: fiscalitate românească (Cod Fiscal, OMFP 1802/2014), standarde internaționale (IFRS, US GAAP), prețuri de transfer, și raportare Power BI construită pe arhitecturi solide de date.</p>
+      <div class="credentials">
+        <div class="credential">
+          <div class="label">Certificare</div>
+          <div class="val">Lean Six Sigma Green Belt</div>
+        </div>
+        <div class="credential">
+          <div class="label">Instrumente</div>
+          <div class="val">Saga · Excel · Power BI· SQL· Lean Six Sigma</div>
+        </div>
+        <div class="credential">
+          <div class="label">Expertiză financiar-contabila</div>
+          <div class="val">Cod Fiscal · Contabilitate statutara· IFRS</div>
+        </div>
+        <div class="credential">
+      
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="eyebrow">Contact</div>
+      <h2>Hai să vorbim despre cifrele tale.</h2>
+      <p class="lead">Completează formularul sau scrie-mi direct. Răspund de regulă în aceeași zi lucrătoare.</p>
+      <div class="contact-detail">
+        <span class="k">Email</span>
+        <a href="mailto:zotta.ani@gmail.com">zotta.ani@gmail.com</a>
+      </div>
+      <div class="contact-detail">
+        <span class="k">Telefon</span>
+        <a href="tel:+40700000000">+40 733 688 856</a>
+      </div>
+      <div class="contact-detail">
+        <span class="k">Locație</span>
+        <span>București, România</span>
+      </div>
+    </div>
+    <form class="form-card reveal" onsubmit="handleSubmit(event)">
+      <label for="name">Nume</label>
+      <input type="text" id="name" required>
+      <label for="company">Companie</label>
+      <input type="text" id="company">
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+      <label for="message">Mesaj</label>
+      <textarea id="message" required placeholder="Spune-mi pe scurt ce te interesează: consultanță contabilitate, fiscalitate, automatizari de rapoarte si procese, dashboard Power BI..."></textarea>
+      <button type="submit">Trimite mesajul</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Ani Zotta —  Contabilitate, Raportare catre management, Imbunatatire de Procese & Cursuri Practice de Contabilitate</p>
+    <p>București, România</p>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e){
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const original = btn.textContent;
+    btn.textContent = 'Mesaj trimis ✓';
+    btn.style.background = '#2F6E5C';
+    setTimeout(()=>{ btn.textContent = original; e.target.reset(); }, 2400);
+  }
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
